@@ -1,0 +1,43 @@
+
+CREATE DATABASE empresa_internet;
+USE empresa_internet;
+
+
+CREATE TABLE Clientes (
+    ID_Cliente INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100),
+    Sobrenome VARCHAR(100),
+    Data_Nascimento DATE,
+    Província VARCHAR(100),
+    Cidade VARCHAR(100),
+    ID_Plano INT,
+    FOREIGN KEY (ID_Plano) REFERENCES Planos(ID_Plano) 
+);
+
+CREATE TABLE Planos (
+    ID_Plano INT AUTO_INCREMENT PRIMARY KEY,
+    Velocidade INT,
+    Preço DECIMAL(10, 2),
+    Desconto DECIMAL(5, 2)
+);
+
+INSERT INTO Clientes (Nome, Sobrenome, Data_Nascimento, Província, Cidade, ID_Plano) VALUES
+('João', 'Silva', '1990-01-15', 'São Paulo', 'São Paulo', 1),
+('Maria', 'Santos', '1985-05-23', 'Rio de Janeiro', 'Rio de Janeiro', 2),
+('Pedro', 'Alves', '1992-03-04', 'Minas Gerais', 'Belo Horizonte', 1),
+('Ana', 'Oliveira', '1988-07-30', 'Bahia', 'Salvador', 3),
+('Carlos', 'Souza', '1995-12-18', 'São Paulo', 'São Paulo', 2),
+('Juliana', 'Lima', '1987-09-27', 'São Paulo', 'São Paulo', 4),
+('Lucas', 'Pereira', '1993-04-12', 'Paraná', 'Curitiba', 1),
+('Laura', 'Rocha', '1989-10-15', 'Rio de Janeiro', 'Rio de Janeiro', 5),
+('Roberto', 'Gomes', '1991-11-02', 'Ceará', 'Fortaleza', 3),
+('Sofia', 'Correia', '1994-06-06', 'Rio de Janeiro', 'Niterói', 4);
+
+INSERT INTO Planos (Velocidade, Preço, Desconto) VALUES
+(50, 99.90, 10.00),
+(100, 149.90, 15.00),
+(200, 199.90, 20.00),
+(300, 299.90, 25.00),
+(400, 399.90, 30.00);
+
+

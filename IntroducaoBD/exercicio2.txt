@@ -1,0 +1,75 @@
+Cliente
+- ID_Cliente (PK, Integer)
+- Nome (String)
+- Email (String)
+- Telefone (String)
+
+
+Carro
+- ID_Carro (PK, Integer)
+- Modelo (String)
+- Marca (String)
+- Ano (Integer)
+- ID_Cliente (FK, Integer)
+
+
+Serviço
+- ID_Serviço (PK, Integer)
+- Descrição (String)
+- Preço (Decimal)
+- Data (Date)
+- ID_Carro (FK, Integer)
+
+
+Avaliação
+- ID_Avaliação (PK, Integer)
+- Nota (Integer)
+C- omentário (String)
+- ID_Serviço (FK, Integer)
+
+
+
+
+
+[Cliente]
++---------------------+
+| ID_Cliente (PK)    |
+| Nome                |
+| Email               |
+| Telefone            |
++---------------------+
+        | 1 
+        | 
+        | N
++---------------------+
+| Carro               |
++---------------------+
+| ID_Carro (PK)      |
+| Modelo              |
+| Marca               |
+| Ano                 |
+| ID_Cliente (FK)    |
++---------------------+
+        | 1 
+        | 
+        | N
+ +---------------------+
+ | Serviço             |
+ +---------------------+
+ | ID_Serviço (PK)    |
+ | Descrição           |
+ | Preço               |
+ | Data                |
+ | ID_Carro (FK)      |
+ +---------------------+
+        | 1 
+        | 
+        | N
++---------------------+
+| Avaliação           |
++---------------------+
+| ID_Avaliação (PK)  |
+| Nota                |
+| Comentário          |
+| ID_Serviço (FK)    |
++---------------------+

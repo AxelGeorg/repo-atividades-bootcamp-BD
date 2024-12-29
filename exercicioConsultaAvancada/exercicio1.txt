@@ -1,0 +1,58 @@
+-- 1. Enumera os dados dos autores.
+SELECT * FROM Autor;
+
+-- 2. Indica o nome e a idade dos alunos.
+SELECT Nombre, Edad FROM Estudiante;
+
+-- 3. Que alunos pertencem ao curso de informática?
+SELECT * FROM Estudiante WHERE Carrera = 'Informática';
+
+-- 4. Quais são os autores de nacionalidade francesa ou italiana?
+SELECT * FROM Autor WHERE Nacionalidade IN ('Francesa', 'Italiana');
+
+-- 5. Quais os livros que não são da área da Internet?
+SELECT * FROM Libro WHERE Area != 'Internet';
+
+-- 6. Enumera os livros publicados pela Salamandra.
+SELECT * FROM Libro WHERE Editorial = 'Salamandra';
+
+-- 7. Enumera os nomes dos alunos cuja idade é superior à média.
+SELECT Nombre FROM Estudiante WHERE Edad > (SELECT AVG(Edad) FROM Estudiante);
+
+-- 8. Enumera os nomes dos alunos cujo apelido começa com a letra G.
+SELECT Nombre FROM Estudiante WHERE Apellido LIKE 'G%';
+
+-- 9. Faz uma lista dos autores do livro "O Universo: Guia de Viagem".
+SELECT a.Nombre
+FROM Autor a
+JOIN LibroAutor la ON a.IdAutor = la.IdAutor
+JOIN Libro l ON la.IdLibro = l.IdLibro
+WHERE l.Titulo = 'O Universo: Guia de Viagem';
+
+-- 10. Que livros emprestaste ao leitor "Filippo Galli"?
+SELECT l.*
+FROM Libro l
+JOIN Prestamo p ON l.IdLibro = p.IdLibro
+JOIN Estudiante e ON p.IdLector = e.Idlector
+WHERE e.Nombre = 'Filippo' AND e.Apellido = 'Galli';
+
+-- 11. Indica o nome do aluno mais novo.
+SELECT Nombre FROM Estudiante ORDER BY Edad ASC LIMIT 1;
+
+-- 12. Enumera os nomes dos alunos a quem foram emprestados livros da Base de Dados.
+SELECT DISTINCT e.Nombre
+FROM Estudiante e
+JOIN Prestamo p ON e.Idlector = p.IdLector;
+
+-- 13. Enumera os livros que pertencem à autora J.K. Rowling.
+SELECT l.*
+FROM Libro l
+JOIN LibroAutor la ON l.IdLibro = la.IdLibro
+JOIN Autor a ON la.IdAutor = a.IdAutor
+WHERE a.Nombre = 'J.K. Rowling';
+
+-- 14. Enumera os títulos dos livros que deviam ser devolvidos em 16/07/2021.
+SELECT l.Titulo
+FROM Libro l
+JOIN Prestamo p ON l.IdLibro = p.IdLibro
+WHERE p.FechaDevolucion = '2021-07-16';

@@ -1,0 +1,20 @@
+Exercício 1
+
+Após a definição dos requisitos da empresa, é solicitado que eles sejam modelados por meio de um DER (Diagrama Entidade-Relacionamento).
+
+
+
+Cliente
+- ID
+- Nome
+- Sobrenome
+- Data de Nascimento
+- Província
+- Cidade
+
+
+Plano de Internet
+- ID
+- Velocidade 
+- Preço
+- Desconto

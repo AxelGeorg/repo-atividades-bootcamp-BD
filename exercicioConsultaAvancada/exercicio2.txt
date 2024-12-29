@@ -1,0 +1,88 @@
+CREATE DATABASE biblioteca;
+USE biblioteca;
+
+-- Criação da tabela Autor
+CREATE TABLE Autor (
+    idautor INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    nacionalidade VARCHAR(100)
+);
+
+-- Criação da tabela Libro
+CREATE TABLE Libro (
+    idlibro INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(200),
+    editorial VARCHAR(100),
+    area VARCHAR(100)
+);
+
+-- Criação da tabela LibroAutor
+CREATE TABLE LibroAutor (
+    idautor INT,
+    idlibro INT,
+    PRIMARY KEY (idautor, idlibro),
+    FOREIGN KEY (idautor) REFERENCES Autor(idautor),
+    FOREIGN KEY (idlibro) REFERENCES Libro(idlibro)
+);
+
+-- Criação da tabela Estudiante
+CREATE TABLE Estudiante (
+    idlector INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    apellido VARCHAR(100),
+    direccion VARCHAR(200),
+    carrera VARCHAR(50),
+    edad INT
+);
+
+-- Criação da tabela Prestamo
+CREATE TABLE Prestamo (
+    idlector INT,
+    idlibro INT,
+    fechaprestamo DATE,
+    fechadevolucion DATE,
+    devuelto BOOLEAN,
+    PRIMARY KEY (idlector, idlibro, fechaprestamo),
+    FOREIGN KEY (idlector) REFERENCES Estudiante(idlector),
+    FOREIGN KEY (idlibro) REFERENCES Libro(idlibro)
+);
+
+-- Inserindo dados na tabela Autor
+INSERT INTO Autor (nombre, nacionalidade) VALUES
+('Gabriel Garcia Marquez', 'Colombiana'),
+('Isabel Allende', 'Chilena'),
+('J.K. Rowling', 'Britânica'),
+('George Orwell', 'Britânica'),
+('Mario Vargas Llosa', 'Peruana');
+
+-- Inserindo dados na tabela Libro
+INSERT INTO Libro (titulo, editorial, area) VALUES
+('Cem Anos de Solidão', 'Harper & Row', 'Literatura'),
+('O Alquimista', 'HarperCollins', 'Ficcão'),
+('1984', 'Secker & Warburg', 'Distopia'),
+('Harry Potter e a Pedra Filosofal', 'Bloomsbury', 'Fantasía'),
+('A Revolução dos Bichos', 'Secker & Warburg', 'Fábula');
+
+-- Inserindo dados na tabela LibroAutor
+INSERT INTO LibroAutor (idautor, idlibro) VALUES
+(1, 1),  -- Gabriel Garcia Marquez with 'Cem Anos de Solidão'
+(2, 2),  -- Isabel Allende with 'O Alquimista'
+(3, 4),  -- J.K. Rowling with 'Harry Potter e a Pedra Filosofal'
+(4, 3),  -- George Orwell with '1984'
+(5, 5);  -- Mario Vargas Llosa with 'A Revolução dos Bichos'
+
+-- Inserindo dados na tabela Estudiante
+INSERT INTO Estudiante (nombre, apellido, direccion, carrera, edad) VALUES
+('Juan', 'Pérez', 'Calle 123', 'Engenharia', 21),
+('Ana', 'García', 'Avenida 456', 'Arquitetura', 23),
+('Luis', 'Martínez', 'Boulevard 789', 'Direito', 22),
+('Carlos', 'López', 'Calle Central 101', 'Economia', 24),
+('María', 'Santos', 'Pasaje Norte 305', 'Medicina', 22);
+
+-- Inserindo dados na tabela Prestamo
+INSERT INTO Prestamo (idlector, idlibro, fechaprestamo, fechadevolucion, devuelto) VALUES
+(1, 1, '2024-01-01', '2024-01-15', TRUE),
+(2, 2, '2024-01-05', '2024-01-20', FALSE),
+(3, 3, '2024-01-10', NULL, FALSE),
+(4, 4, '2024-01-15', '2024-01-25', TRUE),
+(5, 5, '2024-01-20', NULL, FALSE);

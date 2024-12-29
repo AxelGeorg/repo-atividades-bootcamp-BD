@@ -1,0 +1,51 @@
+Quais seriam as entidades desse sistema?
+R:
+Cliente, Produto, Venda, Produto_Venda
+
+
+Quais atributos devem ser determinados para cada entidade (considere o que for necessário)?
+R:
+Cliente
+- ID
+- Nome
+- CPF
+- Telefone
+- Email
+- Endereço
+
+Produto
+- ID
+- Nome
+- Descrição
+- Preço
+- Quantidade_Estoque
+- Categoria
+
+Venda
+- ID
+- Data_Venda
+- ID_Cliente
+- Total_Venda
+
+Produto_Venda
+- ID
+- ID_Venda 
+- ID_Produto
+- Quantidade
+- Preço_Venda
+
+Como serão moldadas as relações entre as entidades? Quais seriam as cardinalidades?
+R:
+Cliente - Venda
+Um cliente pode fazer muitas compras (1:N)
+Uma compra é realizada por um único cliente (N:1)
+
+
+Venda - Produto_Venda
+Uma venda pode conter múltiplos itens (1:N)
+Um item de venda pertence a uma única venda (N:1)
+
+
+Produto - Produto_Venda
+Um produto pode aparecer em várias vendas (1:N)
+Um item de venda refere-se a um único produto (N:1)

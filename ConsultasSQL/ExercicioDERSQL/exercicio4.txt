@@ -1,0 +1,37 @@
+
+SELECT * FROM Clientes;
+
+SELECT * FROM Planos;
+
+SELECT * FROM Clientes WHERE Cidade = 'São Paulo';
+
+SELECT Velocidade, Preço FROM Planos;
+
+SELECT c.Nome, c.Sobrenome 
+FROM Clientes c
+JOIN Planos p ON c.ID_Plano = p.ID_Plano
+WHERE p.Velocidade = 100;
+
+SELECT p.ID_Plano, COUNT(c.ID_Cliente) AS Total_Clientes
+FROM Planos p
+LEFT JOIN Clientes c ON p.ID_Plano = c.ID_Plano
+GROUP BY p.ID_Plano;
+
+SELECT AVG(Preço) AS Preço_Médio FROM Planos;
+
+SELECT c.Nome, c.Sobrenome, p.Desconto
+FROM Clientes c
+JOIN Planos p ON c.ID_Plano = p.ID_Plano
+WHERE p.Desconto > 10;
+
+SELECT * FROM Planos WHERE Velocidade > 200;
+
+SELECT * FROM Clientes WHERE YEAR(CURDATE()) - YEAR(Data_Nascimento) > 30;
+
+
+
+
+
+
+
+

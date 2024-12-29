@@ -1,0 +1,6 @@
+a. Primary Key da tabela Cliente é o ID.
+
+b. Primary Key da tabela Planos de Internet é o ID
+
+c. Um Cliente pode ter apenas um plano, mas um plano pode ser associado a vários clientes (1:N).
+Foreign Key: A tabela de Clientes deve incluir uma chave estrangeira, ID_Plano
